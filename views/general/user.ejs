@@ -1,0 +1,37 @@
+<%-include('C:/Users/sinha/OneDrive/Desktop/FullStackLab/views/general/boilerplate.ejs')%>
+<body>
+
+          <div class="row" style="font-family: Playfair Display; width: 90vw;">
+          <div class="col-4 form-box"><br>
+          <h3 class="mt-5 head-signup"><b>Become an Urbian!</b> </h3>
+          <% if (error) { %>
+                    <div id="error-message" class="alert alert-danger" role="alert" style="text-align: center;">
+                        <%= error %>
+                    </div>
+          <% } %>
+          <form action="/" method="POST" novalidate class="needs-validation">
+          <div class="row">
+          <div class="mb-3">
+                    <input id="username"  class="form-control" type="text" name="login[userName]" placeholder="Username">  
+          </div>
+          <div class="mb-3">
+                    <input id="password" class="form-control" type="password" name="login[password]" placeholder="Password"> 
+          </div>
+          <div class="mb-3">
+                    <input id="confirmPassword" class="form-control" type="password" name="confirm_pass" placeholder="Confirm Password"> 
+          </div>
+          <div>
+                    <button class="btn btn-dark mt-2 mb-3" style="width: 100%;" type="submit" onclick="return validateForm()">Register</button> <br>
+                    <% if (success) { %>
+                        <div id="error-message" class="alert alert-success" role="alert" style="text-align: center;">
+                            <a href="/" class="nav-link"><%= success %></a>
+                        </div>
+                       <% } %>
+          </div>
+          </form>
+          
+</div>
+</div>
+          
+</body>
+</html>

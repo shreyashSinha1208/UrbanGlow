@@ -1,0 +1,47 @@
+
+<body style="background-color: #f1ebeb">
+  <div class="bill">
+    <div class="bill-box p-3">
+      <h5 style="color: grey">Bill Details</h5>
+      <hr />
+      <table class="table-cart">
+        <tr>
+          <td>Price</td>
+          <td align="right">
+            $<%=allItems[allItems.length-1].totalSum.toFixed(2)%>
+          </td>
+        </tr>
+        <tr>
+          <td>Delivery Charges</td>
+          <td align="right">$5.00</td>
+        </tr>
+        <tr>
+          <td>Discount</td>
+          <td style="color: red" align="right">
+            -$<%=allItems[allItems.length-1].discountPrice.toFixed(2)%>(10%)
+          </td>
+        </tr>
+      </table>
+      <hr/>
+      <table>
+        <tr>
+          <td><b>Subtotal</b></td>
+          <td align="right">
+           <b>$<%=allItems[allItems.length-1].finalPrice.toFixed(2)%></b> 
+          </td>
+        </tr>
+      </table>
+      <hr style="margin-bottom: 0.6rem !important;">
+      <% if ((allItems[allItems.length - 1].discountPrice - 5) > 0) { %>
+        <p class="final-discount">
+          You saved $<%= (allItems[allItems.length - 1].discountPrice - 5).toFixed(2) %> on this order!
+        </p>
+      <% } else if ((allItems[allItems.length - 1].discountPrice - 5) < 0) { %>
+        <p class="final-discount">Add more Items!</p>
+      <% } %>      
+    </div>
+    <form action="/checkout" method="get">
+      <button class="mt-2" id="submit-btn" type="submit" >PLACE ORDER</button>
+    </form>
+   
+  </div>

@@ -1,0 +1,37 @@
+<%-include('C:/Users/sinha/OneDrive/Desktop/FullStackLab/views/general/boilerplate.ejs')%>
+<%-include('C:/Users/sinha/OneDrive/Desktop/FullStackLab/views/layout/address.ejs')%>
+<%-include('C:/Users/sinha/OneDrive/Desktop/FullStackLab/views/layout/bill.ejs')%>
+
+
+  <div class="cart-border"  style="font-family: Playfair Display;">
+    <% for ( let item of allItems){ %>
+    <div class="flex cart-div cart-item">
+      <div class="mb-3 mt-3">
+        <img class="mycart-img" src="<%=item.image%>" alt="item-img" />
+      </div>
+      <div class="mycart-desc-div col-8 p-3 mt-1">
+        <h5 style="margin-bottom: 0 !important">
+          <a style="text-decoration: none; color: black; font-weight: 700;" href="/items/<%=item.itemName%>"><%= item.itemName%> <span style="font-family: Poppins; font-size: 1rem;">(<%=item.quantity%>)</span></a>
+        </h5>
+        <p class="mb-2"> <%= item.description.substring(0,50)%>... <br /><b style="font-family: Poppins">$<%=(item.originalPrice).toFixed(2) %></b></p>
+        <p style="font-size: 13px;">Delievery by <b><%= Date().substr(3,4).split(" ").join(" ") + " " + parseInt(parseInt(Date().substr(8,2)) + Math.ceil(Math.random() * 7)) %> | </b></p>
+        <div class="btn-group" role="group" style="float: right">
+          <% if(item.quantity > 1){ %>
+            <form action="/cart/minus/<%=item._id%>?_method=PATCH" method="post">
+              <button type="submit" class="btn-minus">-</button>
+            </form>
+            <% } %>
+          <form action="/cart/add/<%=item._id%>?_method=PATCH" method="post">
+            <button type="submit" class="btn-add">+</button>
+          </form>
+        </div>
+        <form action="/cart/<%=item._id%>?_method=DELETE" method="post">
+          <button type="submit" class="mt-2 btn btn-danger btn-sm">Remove</button>
+        </form>
+      </div>
+    </div>
+    <hr class="border-items" />
+    <% } %>
+  </div>
+</body>
+

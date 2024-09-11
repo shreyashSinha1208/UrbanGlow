@@ -1,0 +1,12 @@
+<%-include('C:/Users/sinha/OneDrive/Desktop/FullStackLab/views/general/boilerplate.ejs')%>
+<div class="alert alert-success" role="alert"
+style="text-align: center;
+font-size: 2rem; font-family: Playfair Display;">
+                    Payment Successful! <br>
+                    Your order for <b style="font-family: serif;">$<%=allItems[allItems.length-1].finalPrice.toFixed(2)%></b>  is placed and received by us. <br>
+                    Expected Delivery by <b> <%= Date().substr(3,4).split(" ").join(" ") + " " + parseInt(parseInt(Date().substr(8,2)) + Math.ceil(Math.random() * 7)) %>, 2024. </b><br>
+                    <form action="/" method="get">
+                              <button type="submit" class="btn btn-info btn-lg mt-4">Go Back <i class="fa-solid fa-arrow-right"></i></button>
+                    </form>
+                    
+        </div>

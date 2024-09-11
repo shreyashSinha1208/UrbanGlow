@@ -1,0 +1,26 @@
+<%-include('C:/Users/sinha/OneDrive/Desktop/FullStackLab/views/general/boilerplate.ejs')%>
+
+      <body>
+            
+                  <div class="item-all">
+                        <div class="item-img-div"> <br><br>
+                              <img class="item-img" src="<%=item.image%>" alt="itemImage">
+                        </div>
+                        <div class="item-details-div"> <br><br>
+                                 <h3 id="item-title"><%= item.itemName %> </h3>
+                                 <h5 id="item-brand">By <b><i><%=item.brand%></i> </b></h5>
+                                 <div id="review-star"><%=item.reviewStar%>&#9734;</div> <br>
+                                 <p id="item-price"><b>$<%=item.price%></b> </p><br>
+                                 <p id="item-promote"><i class="fa-solid fa-tag"></i> &nbsp; Get <%= Math.ceil(Math.random()*10)%>% Off on Selected Items on buy <b>T&C</b></p>
+                                 <p id="item-desc"><b><i>"<%=item.description%>"</i></b></p>
+                                 <small id="delievery-date">Delievery by <%= Date().substr(0,7).split(" ").join(" ") + " " + parseInt(parseInt(Date().substr(8,2)) + Math.ceil(Math.random() * 7)) %></small><br>
+                                 <form action="/cart/<%=item._id%>?_method=PATCH" method="post">
+                                 <button type="submit" class="btn btn-md mt-2" style="background-color:darkgoldenrod; color: white;"> <i class="fa-solid fa-cart-shopping"></i> Add to Cart  </button>
+                                 </form>
+                        </div>
+                  </div>
+                
+                  <%-include('C:/Users/sinha/OneDrive/Desktop/FullStackLab/views/general/footer.ejs')%>
+      </body>
+
+      </html>

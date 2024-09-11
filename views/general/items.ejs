@@ -1,0 +1,36 @@
+
+
+<div class="album py-5 bg-body-tertiary" style="padding-bottom: 0px !important;">
+          <h1 id="main-heading-front">Featured Products</h1>
+                  <div class="container">
+                  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                  <% for(let item of allItems) { %>
+                   
+                      <div class="col">
+                        <div class="card">
+                          <a href="/items/<%=item.itemName%>"class="item-link">
+                         <img class="card-img-top"  src="<%=item.image%>">
+                         <div class="card-body">
+                           <p class="card-title"> <b><%=item.itemName %></b> </p>
+                           <p class="card-text"> By <b> <i><%=item.brand %></i>   </b> </p>
+                           <div class="ml-75" id="review-star"><b>&#9734;<%=item.reviewStar%></b> </div>
+                          </a> 
+                           <hr style="margin-bottom: 8px;">
+                          <div class="flex" style="justify-content: space-between;">
+                            <div><b><%=item.price%>$</b></div>
+                            <div  class="card-icons">
+                              <a href="https://www.amazon.in/s?k=<%=item.itemName%>" target="_blank"><i  style="color: grey" class="fa-solid share-icon fa-circle-info"></i></a>
+                              <i style="color: red;" onclick="favourite(this)" class="fa-regular fa-heart"></i>
+                            </div>
+                          </div>
+                      </div>
+                   </div>
+                 </div>
+              <% } %>
+                   </div>
+                  </div>
+                  <%-include('C:/Users/sinha/OneDrive/Desktop/FullStackLab/views/general/footer.ejs')%></div>
+        
+</body>
+
+</html>
